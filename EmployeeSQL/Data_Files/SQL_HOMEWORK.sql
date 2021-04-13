@@ -24,32 +24,34 @@ CREATE TABLE "departments" (
 );
 
 CREATE TABLE "employees" (
-    "emp_no" INTEGER   NOT NULL,
-    "emp_title_id" VARCHAR(10)   NOT NULL,
-    "birth_date" VARCHAR(8)   NOT NULL,
-    "first_name" VARCHAR(20)   NOT NULL,
-    "last_name" VARCHAR(20)   NOT NULL,
-    "gender" VARCHAR(1)   NOT NULL,
-    "hire_date" VARCHAR(8)   NOT NULL,
+    "emp_no" INT   NOT NULL,
+    "birth_date" DATE   NOT NULL,
+    "first_name" VARCHAR   NOT NULL,
+    "last_name" VARCHAR   NOT NULL,
+    "gender" VARCHAR   NOT NULL,
+    "hire_date" DATE   NOT NULL,
     CONSTRAINT "pk_employees" PRIMARY KEY (
         "emp_no"
      )
 );
 
+
 CREATE TABLE "dept_manager" (
     "dept_no" VARCHAR(10)   NOT NULL,
-    "emp_no" INTEGER   NOT NULL
+    "emp_no" VARCHAR(10)   NOT NULL
 );
 
 CREATE TABLE "salaries" (
-    "emp_no" INTEGER   NOT NULL,
-    "salary" INTEGER   NOT NULL
+    "emp_no" VARCHAR(10)   NOT NULL,
+    "salary" VARCHAR(10)   NOT NULL
 );
 
 CREATE TABLE "dept_emp" (
-    "emp_no" INTEGER   NOT NULL,
+    "emp_no" VARCHAR(10)   NOT NULL,
     "dept_no" VARCHAR(10)   NOT NULL
 );
+
+DROP TABLE "employees" CASCADE;
 
 ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title_id" FOREIGN KEY("emp_title_id")
 REFERENCES "titles" ("title_id");
